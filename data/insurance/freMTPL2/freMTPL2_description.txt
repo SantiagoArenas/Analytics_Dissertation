@@ -1,0 +1,51 @@
+freMTPL2 Dataset
+This dataset is a mirror of the freMTPL2 frequency and severity datasets, originally published by Arthur Charpentier to accompany his textbook Computational Actuarial Science with R.
+
+The freMTPL2 dataset contains data on Third-Party Liability (TPL) Motor insurance policies issued in France, along with claims filed against those policies, observed over a duration of just over a year.
+
+These observations are organized into two separate CSV files:
+
+freMTPL2freq.csv: a 'Frequency' dataset that stores the risk attributes of the observed insurance policies.
+freMTPL2sev.csv: a 'Severity' dataset that records monetary loss of each claim made against one of the policies in freMTPL2freq.csv.
+For further details on the freMTPL2 dataset, please consult Page 71 of the CASdatasets R package documentation.
+
+Both freMTPL2freq.csv and freMTPL2sev.csv in this HuggingFace dataset were sourced from the karansarpal/freMTPL2-french-motor-tpl-insurance-claims Kaggle dataset.
+
+freMTPL2freq.csv Description
+This file contains data on 678,013 TPL motor insurance policies. Each row represents a single policy and contains the following columns:
+
+IDpol (int): Policy ID number; uniquely identifies each row in freMTPL2freq.csv.
+ClaimNb (int): Total number of TPL motor claims made against the policy.
+Exposure (float): Duration (in years) the policy was observed.
+VehPower (int): Vehicle power encoded as an ordinal integer (higher values indicate more powerful vehicles).
+VehAge (int): Age of the vehicle in years (integer part only).
+DrivAge (int): Driver's age in years (integer part only). In France, the legal driving age is 18. The minimum driver age in this dataset is 18 years old.
+BonusMalus (int): Bonus-Malus factor that ranges from 50 to 350. In France, < 100 means bonus, whilst > 100 means malus.
+VehBrand (string): Anonymized vehicle brand code.
+VehGas (string): Fuel type, either 'Regular' or 'Diesel'.
+Area (string): Population density category of the city/community the driver lives in; these categories are ordered from "A" (rural) to "F" (urban center).
+Density (int): Number of inhabitants per square-kilometer living in the city/area where the vehicle driver resides.
+Region (string): Region in France the vehicle driver resides; these categories correspond to the 1982 - 2015 French region definitions.
+freMTPL2sev.csv Description
+This file contains data on 26,639 claims made against policies in freMTPL2freq.csv. Each row represents a single claim and contains the following columns:
+
+IDpol (int): Policy ID number linking the claim to a policy in freMTPL2freq.csv. Note that IDpol is not a unique row identifier in this file, as multiple claims may be made against the same policy.
+ClaimAmount (float): Most up-to-date estimate of the total financial loss/cost of the claim, presumably in Euros (although the exact currency the financial losses are recorded is not disclosed).
+Relationship between freMTPL2freq.csv and freMTPL2sev.csv
+There is a one-to-many relationship between freMTPL2freq.csv and freMTPL2sev.csv such that:
+
+Each claim in freMTPL2sev.csv is associated with no more than one policy in freMTPL2freq.csv.
+Each policy in freMTPL2freq.csv can join onto one or more claims in freMTPL2sev.csv (i.e. multiple claims can be made against the same policy).
+Conversely, not all policies in freMTPL2freq.csv will join onto a claim listed in freMTPL2sev.csv (i.e. not all policyholders make a claim against their policy). Indeed, ~96% of the policies in freMTPL2freq.csv have no associated claims in freMTPL2sev.csv.
+Data Inconsistency Issues
+Please be aware that some data inconsistencies exist between the freMTPL2freq.csv and freMTPL2sev.csv files:
+
+Missing Policy Records: Not all claims in freMTPL2sev.csv have a corresponding policy in freMTPL2freq.csv, meaning that the risk attributes associated with these claims are unknown. This issue affects 195 out of 26,639 records in freMTPL2freq.csv.
+
+ClaimNb Discrepancies: For some policies in freMTPL2freq.csv, the recorded ClaimNb does not match the actual number of claims recorded in freMTPL2sev.csv for those policies. For instance:
+
+Some policies with ClaimNb = 1 have no matching claims in freMTPL2sev.csv.
+One policy with ClaimNb = 2 has only one matching claim in freMTPL2sev.csv.
+This issue affects 9,117 out of 678,013 policies in freMTPL2freq.csv.
+
+These data inconsistency issues have been retained in this Hugging Face dataset so that it remains an exact replica of the original freMTPL2 dataset.
