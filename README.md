@@ -8,7 +8,7 @@ Information about how cars are driven.
 1. [**SHRP2 — Naturalistic Driving Study (NDS)**](https://insight.shrp2nds.us/data/index)
 I have requested information to them via email, seeing as one cannot access the data without getting permission.
 2. [**highD dataset**](https://levelxdata.com/highd-dataset/)
-I have requested information and access as well.
+I have gotten access to this data. Extensive and amazing.
 3. [**Driving Behavior Dataset**](https://data.mendeley.com/datasets/jj3tw8kj6h/3)
 Dataset for modeling risky driver behaviors based on accelerometer (X,Y,Z axis in meters per second squared (m/s2)) and gyroscope (X,Y, Z axis in degrees per second (°/s) ) data. Very few drivers (3), small scale, no policy/claim labels, no exposure metadata.
 ### Insurance Policies
