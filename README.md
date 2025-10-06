@@ -26,3 +26,5 @@ Useful context to add to the dataset. I plan to connect via API and help get mor
 1. **Road Network & Posted Speeds**
 2. **Weather information**
 
+REMEMBER TO ALWAYS ACTIVATE VENV IN TERMINAL
+source .venv/bin/activate

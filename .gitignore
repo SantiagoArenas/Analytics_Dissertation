@@ -4,3 +4,8 @@
 *.docx
 *.txt
 *.png
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
